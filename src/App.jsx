@@ -3,10 +3,15 @@ import "./App.css";
 
 const MY_INFO = {
   name: "Võ Lâm Gia Kiệt",
-  role: "Full Stack Developer ",
+  role: "Software Engineering Student",
   avatar: "/QD000584.jpg",
-  bio: "3rd-year IT student (K23) at Sai Gon University. Full-stack developer with teaching experience at tech academies like SaiGonSTEM. Passionate about building scalable web applications integrated with AI—especially RAG systems and NLP. Highly proficient in React, Node.js, Python, and working in Linux environments.",
+  bio: "3rd-year IT student (K23) at Sai Gon University. I enjoy solving practical problems through code—whether it's building full-stack applications, writing automation tests, or optimizing complex algorithms. I also have experience teaching STEM, which helps me communicate technical concepts clearly.",
   social: [
+    {
+      label: "Resume",
+      href: "/GiaKiet_Resume.pdf",
+      icon: "external",
+    },
     {
       label: "GitHub",
       href: "https://github.com/GiaKiet201205",
@@ -14,7 +19,7 @@ const MY_INFO = {
     },
     {
       label: "LinkedIn",
-      href: "https://www.linkedin.com/in/ki\%E1\%BB\%87t-v\%C3\%B5-3b890a3b5/",
+      href: "https://www.linkedin.com/in/ki%E1%BB%87t-v%C3%B5-3b890a3b5/",
       icon: "linkedin",
     },
     {
@@ -24,80 +29,116 @@ const MY_INFO = {
     },
   ],
   skills: [
+    "Java",
+    "Python",
     "React",
-    "Node.js",
-    "Python",
+    "Spring Boot",
+    "MySQL",
+    "Cypress",
     "LangChain",
-    "FAISS",
-    "Ollama",
-    "Linux / Arch",
-    "Tailwind CSS",
+    "Linux",
   ],
 };
 
-const PROJECT = {
-  name: "SmartDoc AI",
-  tagline: "Intelligent Document Q&A System",
-  course: "Open Source Software Development · Spring 2026 · SGU",
-  description:
-    "An advanced, fully localized Retrieval-Augmented Generation (RAG) system designed for intelligent document Q&A. Users can upload PDF files, and the system automatically extracts, splits, and embeds the text to allow natural language querying. Powered by Qwen2.5:7b via Ollama and FAISS vector search, it guarantees 100% data privacy with zero API costs while offering robust support for over 50 languages including English and Vietnamese.",
-  tech: [
-    "Python",
-    "LangChain Framework",
-    "FAISS Database",
-    "Qwen2.5:7b",
-    "Ollama",
-    "Streamlit",
-    "HuggingFace MPNet",
-    "PDFPlumber",
-  ],
-  github: "https://github.com/username/smartdoc-ai",
-
-  achievements: [
-    {
-      icon: "📄",
-      title: "Automated Document Processing",
-      desc: "Utilizes PDFPlumberLoader for accurate text extraction. Applies RecursiveCharacterTextSplitter to break documents into 1000-character chunks with a 100-character overlap to preserve semantic context.",
-      tag: "Data Layer",
-    },
-    {
-      icon: "🔢",
-      title: "Multilingual Vector Indexing",
-      desc: "Converts text chunks into 768-dimensional vectors using the HuggingFace MPNet model. Vectors are stored in a FAISS database enabling hyper-fast, billion-scale cosine similarity searches.",
-      tag: "Core Engine",
-    },
-    {
-      icon: "🤖",
-      title: "Local LLM Integration",
-      desc: "Integrates Qwen2.5:7b via Ollama. It auto-detects the user's language (Vietnamese/English) via the prompt template and dynamically generates concise, context-aware answers without needing an internet connection.",
-      tag: "Model Layer",
-    },
-    {
-      icon: "💬",
-      title: "Conversational RAG & Memory",
-      desc: "Features a persistent session state that tracks conversation history in a user-friendly sidebar. Supports follow-up questions and includes strict state management to clear history or reset the vector store safely.",
-      tag: "App Layer",
-    },
-    {
-      icon: "📌",
-      title: "Source Citation Tracking",
-      desc: "Enhances trustworthiness by providing direct source citations. The system retrieves the exact metadata, allowing users to verify the exact page and paragraph used by the LLM to generate the answer.",
-      tag: "Advanced",
-    },
-    {
-      icon: "⚡",
-      title: "Hybrid Search Optimization",
-      desc: "Built to support advanced RAG features, including Hybrid Search combining dense vector retrieval with BM25 keyword matching to ensure maximum query relevance.",
-      tag: "Future Scope",
-    },
-  ],
-  metrics: [
-    { value: "85–90%", label: "Retrieval Accuracy" },
-    { value: "80–85%", label: "Answer Relevance" },
-    { value: "50+", label: "Supported Languages" },
-    { value: "100%", label: "Local Data Privacy" },
-  ],
-};
+const PROJECTS = [
+  {
+    icon: "🧠",
+    name: "SmartDoc AI",
+    tagline: "Intelligent Document Q&A System",
+    course: "Open Source Software Dev · Spring 2026",
+    description:
+      "A local Retrieval-Augmented Generation (RAG) system built to analyze and query PDF documents. By utilizing Qwen2.5:7b via Ollama and FAISS for vector search, it provides accurate, privacy-focused answers without relying on paid external APIs.",
+    tech: ["Python", "LangChain", "FAISS", "Qwen2.5", "Ollama", "Streamlit"],
+    metrics: [
+      { value: "100%", label: "Local Privacy" },
+      { value: "50+", label: "Languages" },
+      { value: "85%", label: "Retrieval Acc" },
+      { value: "Zero", label: "API Cost" },
+    ],
+  },
+  {
+    icon: "🧪",
+    name: "Apple Device Management",
+    tag: "Software Testing & QA",
+    course: "Software Testing · Fall 2025",
+    description:
+      "Conducted comprehensive software testing for a full-stack web application following strict Test-Driven Development (TDD) methodologies. Designed and executed Unit, Integration, Mock, and End-to-End automation tests.",
+    tech: [
+      "React",
+      "Spring Boot",
+      "Cypress",
+      "Jest",
+      "JUnit 5",
+      "JaCoCo",
+      "CI/CD",
+    ],
+    metrics: [
+      { value: "85%+", label: "Code Coverage" },
+      { value: "TDD", label: "Methodology" },
+      { value: "E2E", label: "Auto Tested" },
+      { value: "CI/CD", label: "Integrated" },
+    ],
+  },
+  {
+    icon: "🚚",
+    name: "MDVRP Optimizer",
+    tagline: "Large-scale Logistics Routing",
+    course: "Python Programming · Fall 2025",
+    description:
+      "Engineered routing optimization solutions for complex logistics datasets. Developed and evaluated algorithmic strategies combining Genetic Algorithms, OR-Tools, and advanced meta-heuristics to maximize route efficiency.",
+    tech: [
+      "Python",
+      "OR-Tools",
+      "Genetic Algorithm",
+      "Simulated Annealing",
+      "Tabu Search",
+    ],
+    metrics: [
+      { value: "2,000", label: "Depots" },
+      { value: "3,500", label: "Customers" },
+      { value: "3", label: "Hybrid Strategies" },
+      { value: "High", label: "Efficiency" },
+    ],
+  },
+  {
+    icon: "🚌",
+    name: "Smart School Bus (SSB 1.0)",
+    tagline: "Tracking & Management System",
+    course: "Software Engineering · Fall 2025",
+    description:
+      "Architected a comprehensive school bus tracking system. Designed detailed system architecture using UML diagrams and implemented robust core functionalities emphasizing OOP principles and the MVC pattern.",
+    tech: [
+      "React",
+      "Java",
+      "System Architecture",
+      "UML",
+      "OOP",
+      "SOLID",
+      "MVC",
+    ],
+    metrics: [
+      { value: "UML", label: "System Design" },
+      { value: "MVC", label: "Architecture" },
+      { value: "SOLID", label: "Principles" },
+      { value: "OOP", label: "Core Focus" },
+    ],
+  },
+  {
+    icon: "🛒",
+    name: "Omnichannel POS System",
+    tagline: "Clothing Store Management",
+    course: "Java Programming · Spring 2025",
+    description:
+      "Developed a comprehensive retail management system featuring an online e-commerce web platform for customer orders and a secure, offline Point of Sale (POS) desktop application for administrative management.",
+    tech: ["Java", "MySQL Workbench", "E-commerce", "Desktop GUI", "RBAC"],
+    metrics: [
+      { value: "Online", label: "Web Platform" },
+      { value: "Offline", label: "POS App" },
+      { value: "RBAC", label: "Security" },
+      { value: "Sync", label: "Database" },
+    ],
+  },
+];
 
 const icons = {
   github: (
@@ -215,7 +256,7 @@ export default function App() {
             <span>🎓</span>
             <div>
               <div className="school-name">Sai Gon University</div>
-              <div className="school-sub">Information Technology </div>
+              <div className="school-sub">Information Technology</div>
             </div>
           </div>
         </aside>
@@ -225,126 +266,67 @@ export default function App() {
             <div className="breadcrumb">
               <span>portfolio</span>
               <span className="bc-dot">/</span>
-              <span className="bc-hi">smartdoc-ai</span>
+              <span className="bc-hi">projects</span>
             </div>
             <div className="live-tag">
               <span className="live-dot" />
-              Production Ready
-            </div>
-          </div>
-
-          <div className="hero-card">
-            <div className="hero-bar" />
-            <div className="hero-head">
-              <div className="hero-icon">🧠</div>
-              <div className="hero-meta-wrap">
-                <div className="hero-course">{PROJECT.course}</div>
-                <h2 className="hero-name">{PROJECT.name}</h2>
-                <div className="hero-tagline">{PROJECT.tagline}</div>
-              </div>
-            </div>
-
-            <p className="hero-desc">{PROJECT.description}</p>
-
-            <div className="tech-row">
-              {PROJECT.tech.map((t) => (
-                <span key={t} className="tech-pill">
-                  {t}
-                </span>
-              ))}
-            </div>
-
-            <div className="metrics">
-              {PROJECT.metrics.map((m) => (
-                <div key={m.label} className="metric">
-                  <div className="metric-val">{m.value}</div>
-                  <div className="metric-lbl">{m.label}</div>
-                </div>
-              ))}
-            </div>
-
-            <div className="hero-btns">
-              <a
-                href={PROJECT.github}
-                className="btn-ghost"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {icons.github} Repository
-              </a>
-              <a
-                href="/GiaKiet_Resume.pdf"
-                className="btn-solid"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <svg
-                  width="15"
-                  height="15"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  style={{ marginRight: "6px" }}
-                >
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <polyline points="14 2 14 8 20 8"></polyline>
-                  <line x1="16" y1="13" x2="8" y2="13"></line>
-                  <line x1="16" y1="17" x2="8" y2="17"></line>
-                  <polyline points="10 9 9 9 8 9"></polyline>
-                </svg>
-                Resume
-              </a>
+              Developer
             </div>
           </div>
 
           <div className="sec-head">
             <span className="sec-num">01</span>
-            <span className="sec-title">Core Architecture & Features</span>
-          </div>
-          <div className="feat-grid">
-            {PROJECT.achievements.map((a, i) => (
-              <div
-                key={i}
-                className="feat-card"
-                style={{ animationDelay: `${i * 0.06}s` }}
-              >
-                <div className="feat-row1">
-                  <span className="feat-icon">{a.icon}</span>
-                  <span className="feat-tag">{a.tag}</span>
-                </div>
-                <div className="feat-title">{a.title}</div>
-                <div className="feat-desc">{a.desc}</div>
-              </div>
-            ))}
+            <span className="sec-title">Academic & Personal Projects</span>
           </div>
 
-          <div className="sec-head" style={{ marginTop: 36 }}>
-            <span className="sec-num">02</span>
-            <span className="sec-title">Document Processing Flow</span>
-          </div>
-          <div className="pipeline">
-            {[
-              { icon: "📤", label: "Load PDF" },
-              { icon: "✂️", label: "Split Text" },
-              { icon: "🔢", label: "Embed MPNet" },
-              { icon: "🗃️", label: "FAISS Store" },
-              { icon: "❓", label: "Input Query" },
-              { icon: "🔍", label: "Cosine Search" },
-              { icon: "🤖", label: "Qwen2.5:7b" },
-              { icon: "💡", label: "Response" },
-            ].map((s, i, arr) => (
-              <div key={s.label} className="pipe-wrap">
-                <div className="pipe-step">
-                  <div className="pipe-icon">{s.icon}</div>
-                  <div className="pipe-lbl">{s.label}</div>
+          {/* HIỂN THỊ ĐỒNG ĐỀU TẤT CẢ ĐỒ ÁN BẰNG HERO CARD */}
+          {PROJECTS.map((project, index) => (
+            <div
+              key={index}
+              className="hero-card"
+              style={{ marginBottom: "36px" }}
+            >
+              <div className="hero-bar" />
+              <div className="hero-head">
+                <div className="hero-icon">{project.icon}</div>
+                <div className="hero-meta-wrap">
+                  <div className="hero-course">{project.course}</div>
+                  <h2 className="hero-name">{project.name}</h2>
+                  <div className="hero-tagline">{project.tagline}</div>
                 </div>
-                {i < arr.length - 1 && <span className="pipe-arr">→</span>}
               </div>
-            ))}
-          </div>
+
+              <p className="hero-desc">{project.description}</p>
+
+              <div className="tech-row">
+                {project.tech.map((t) => (
+                  <span key={t} className="tech-pill">
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              <div className="metrics">
+                {project.metrics.map((m) => (
+                  <div key={m.label} className="metric">
+                    <div className="metric-val">{m.value}</div>
+                    <div className="metric-lbl">{m.label}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="hero-btns">
+                <a
+                  href="https://github.com/GiaKiet201205"
+                  className="btn-ghost"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {icons.github} Repository
+                </a>
+              </div>
+            </div>
+          ))}
         </main>
       </div>
     </div>
