@@ -1,144 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-
-const MY_INFO = {
-  name: "Võ Lâm Gia Kiệt",
-  role: "Software Engineering Student",
-  avatar: "/QD000584.jpg",
-  bio: "3rd-year IT student (K23) at Sai Gon University. I enjoy solving practical problems through code—whether it's building full-stack applications, writing automation tests, or optimizing complex algorithms. I also have experience teaching STEM, which helps me communicate technical concepts clearly.",
-  social: [
-    {
-      label: "Resume",
-      href: "/GiaKiet_Resume.pdf",
-      icon: "external",
-    },
-    {
-      label: "GitHub",
-      href: "https://github.com/GiaKiet201205",
-      icon: "github",
-    },
-    {
-      label: "LinkedIn",
-      href: "https://www.linkedin.com/in/ki%E1%BB%87t-v%C3%B5-3b890a3b5/",
-      icon: "linkedin",
-    },
-    {
-      label: "volamgiakiet@gmail.com",
-      href: "mailto:volamgiakiet@gmail.com",
-      icon: "email",
-    },
-  ],
-  skills: [
-    "Java",
-    "Python",
-    "React",
-    "Spring Boot",
-    "MySQL",
-    "Cypress",
-    "LangChain",
-    "Linux",
-  ],
-};
-
-const PROJECTS = [
-  {
-    icon: "🧠",
-    name: "SmartDoc AI",
-    tagline: "Intelligent Document Q&A System",
-    course: "Open Source Software Dev · Spring 2026",
-    description:
-      "A local Retrieval-Augmented Generation (RAG) system built to analyze and query PDF documents. By utilizing Qwen2.5:7b via Ollama and FAISS for vector search, it provides accurate, privacy-focused answers without relying on paid external APIs.",
-    tech: ["Python", "LangChain", "FAISS", "Qwen2.5", "Ollama", "Streamlit"],
-    metrics: [
-      { value: "100%", label: "Local Privacy" },
-      { value: "50+", label: "Languages" },
-      { value: "85%", label: "Retrieval Acc" },
-      { value: "Zero", label: "API Cost" },
-    ],
-  },
-  {
-    icon: "🧪",
-    name: "Apple Device Management",
-    tag: "Software Testing & QA",
-    course: "Software Testing · Fall 2025",
-    description:
-      "Conducted comprehensive software testing for a full-stack web application following strict Test-Driven Development (TDD) methodologies. Designed and executed Unit, Integration, Mock, and End-to-End automation tests.",
-    tech: [
-      "React",
-      "Spring Boot",
-      "Cypress",
-      "Jest",
-      "JUnit 5",
-      "JaCoCo",
-      "CI/CD",
-    ],
-    metrics: [
-      { value: "85%+", label: "Code Coverage" },
-      { value: "TDD", label: "Methodology" },
-      { value: "E2E", label: "Auto Tested" },
-      { value: "CI/CD", label: "Integrated" },
-    ],
-  },
-  {
-    icon: "🚚",
-    name: "MDVRP Optimizer",
-    tagline: "Large-scale Logistics Routing",
-    course: "Python Programming · Fall 2025",
-    description:
-      "Engineered routing optimization solutions for complex logistics datasets. Developed and evaluated algorithmic strategies combining Genetic Algorithms, OR-Tools, and advanced meta-heuristics to maximize route efficiency.",
-    tech: [
-      "Python",
-      "OR-Tools",
-      "Genetic Algorithm",
-      "Simulated Annealing",
-      "Tabu Search",
-    ],
-    metrics: [
-      { value: "2,000", label: "Depots" },
-      { value: "3,500", label: "Customers" },
-      { value: "3", label: "Hybrid Strategies" },
-      { value: "High", label: "Efficiency" },
-    ],
-  },
-  {
-    icon: "🚌",
-    name: "Smart School Bus (SSB 1.0)",
-    tagline: "Tracking & Management System",
-    course: "Software Engineering · Fall 2025",
-    description:
-      "Architected a comprehensive school bus tracking system. Designed detailed system architecture using UML diagrams and implemented robust core functionalities emphasizing OOP principles and the MVC pattern.",
-    tech: [
-      "React",
-      "Java",
-      "System Architecture",
-      "UML",
-      "OOP",
-      "SOLID",
-      "MVC",
-    ],
-    metrics: [
-      { value: "UML", label: "System Design" },
-      { value: "MVC", label: "Architecture" },
-      { value: "SOLID", label: "Principles" },
-      { value: "OOP", label: "Core Focus" },
-    ],
-  },
-  {
-    icon: "🛒",
-    name: "Omnichannel POS System",
-    tagline: "Clothing Store Management",
-    course: "Java Programming · Spring 2025",
-    description:
-      "Developed a comprehensive retail management system featuring an online e-commerce web platform for customer orders and a secure, offline Point of Sale (POS) desktop application for administrative management.",
-    tech: ["Java", "MySQL Workbench", "E-commerce", "Desktop GUI", "RBAC"],
-    metrics: [
-      { value: "Online", label: "Web Platform" },
-      { value: "Offline", label: "POS App" },
-      { value: "RBAC", label: "Security" },
-      { value: "Sync", label: "Database" },
-    ],
-  },
-];
+import { CONTENT } from "./content";
 
 const icons = {
   github: (
@@ -184,147 +46,144 @@ const icons = {
   ),
 };
 
-function Avatar({ src }) {
+const projectIconPaths = {
+  "training-center": <><rect x="4" y="3" width="16" height="18" rx="1" /><path d="M9 21v-5h6v5M8 7h1m6 0h1M8 11h1m6 0h1" /></>,
+  "misinformation-simulator": <><circle cx="12" cy="5" r="2" /><circle cx="5" cy="18" r="2" /><circle cx="19" cy="18" r="2" /><path d="m11 7-5 9m7-9 5 9M7 18h10" /></>,
+  "university-admissions": <><path d="m2 8 10-5 10 5-10 5L2 8Zm4 2v7c4 3 8 3 12 0v-7m4-2v8" /></>,
+  "product-testing": <><rect x="5" y="4" width="14" height="17" rx="2" /><path d="M9 4V2h6v2m-6 9 2 2 4-5" /></>,
+  "ssb": <><rect x="4" y="3" width="16" height="16" rx="3" /><path d="M4 11h16M8 7h8M7 19v2m10-2v2M8 15h1m6 0h1" /></>,
+  "fashion-store": <><path d="M5 7h14l1 14H4L5 7Zm3 0V5a4 4 0 0 1 8 0v2" /></>,
+};
+
+function ProjectIcon({ id }) {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"
+      strokeLinejoin="round" aria-hidden="true" focusable="false">
+      {projectIconPaths[id] ?? <path d="m8 5-7 7 7 7m8-14 7 7-7 7" />}
+    </svg>
+  );
+}
+
+function Avatar({ src, alt }) {
   return (
     <div className="avatar-wrap">
-      <div className="avatar-ring" />
       <div className="avatar-inner">
         {src ? (
-          <img src={src} alt="avatar" />
+          <img src={src} alt={alt} width="100" height="100" />
         ) : (
           <span className="avatar-emoji">💻</span>
         )}
       </div>
-      <span className="avatar-status" />
     </div>
   );
 }
 
 export default function App() {
-  const [show, setShow] = useState(false);
+  const [language, setLanguage] = useState(() => {
+    try {
+      return localStorage.getItem("portfolio-language") === "vi" ? "vi" : "en";
+    } catch {
+      return "en";
+    }
+  });
+  const { info, workExperience, projects, ui } = CONTENT[language];
   useEffect(() => {
-    setTimeout(() => setShow(true), 60);
-  }, []);
+    document.documentElement.lang = language;
+    document.title = ui.pageTitle;
+    try {
+      localStorage.setItem("portfolio-language", language);
+    } catch {
+      // Switching also works when browser storage is unavailable.
+    }
+  }, [language, ui.pageTitle]);
 
   return (
-    <div className={`page ${show ? "show" : ""}`}>
+    <div className="page">
+      <div className="language-switch" role="group" aria-label={ui.language}>
+        {[{ code: "en", label: "EN", name: "English" },
+          { code: "vi", label: "VI", name: "Tiếng Việt" }].map((option) => (
+          <button key={option.code} type="button" lang={option.code}
+            aria-label={option.name} aria-pressed={language === option.code}
+            onClick={() => setLanguage(option.code)}>
+            {option.label}
+          </button>
+        ))}
+      </div>
       <div className="layout">
         <aside className="left-panel">
-          <Avatar src={MY_INFO.avatar} />
-          <h1 className="name">{MY_INFO.name}</h1>
-          <div className="role-pill">
-            <span className="role-dot" />
-            {MY_INFO.role}
+          <Avatar src={info.avatar} alt={ui.avatarAlt} />
+          <h1 className="name">{info.name}</h1>
+          <div className="role-pill"><span className="role-dot" />{info.role}</div>
+          <div className="bio">
+            <h2 className="bio-heading">{ui.aboutMe}</h2>
+            <p>{info.bio}</p>
           </div>
-          <p className="bio">{MY_INFO.bio}</p>
-
-          <div className="sep-line">
-            <span>CONTACT</span>
-          </div>
+          <section className="experience-section" aria-labelledby="experience-heading">
+            <h2 className="bio-heading" id="experience-heading">{ui.workExperience}</h2>
+            <div className="experience-list">
+              {workExperience.map((job) => (
+                <article className="experience-card" key={job.id}>
+                  <div className="experience-header">
+                    <div>
+                      <h3 className="experience-role">{job.role}</h3>
+                      <p className="experience-company">{job.company}</p>
+                    </div>
+                    <p className="experience-period">{job.period}</p>
+                  </div>
+                  <ul className="experience-details">
+                    {job.responsibilities.map((responsibility) => <li key={responsibility}>{responsibility}</li>)}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </section>
+          <div className="sep-line"><span>{ui.contact}</span></div>
           <div className="social-list">
-            {MY_INFO.social.map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                target="_blank"
-                rel="noreferrer"
-                className="social-item"
-              >
+            {info.social.map((s) => (
+              <a key={s.label} href={s.href} target="_blank" rel="noreferrer" className="social-item">
                 <span className="s-ic">{icons[s.icon]}</span>
-                <span className="s-lbl">{s.label}</span>
-                <span className="s-arr">↗</span>
+                <span className="s-lbl">{s.label}</span><span className="s-arr">↗</span>
               </a>
             ))}
           </div>
-
-          <div className="sep-line">
-            <span>TECH STACK</span>
-          </div>
+          <div className="sep-line"><span>{ui.techStack}</span></div>
           <div className="chip-wrap">
-            {MY_INFO.skills.map((s, i) => (
-              <span
-                key={s}
-                className="chip"
-                style={{ animationDelay: `${i * 0.05}s` }}
-              >
-                {s}
-              </span>
-            ))}
+            {info.skills.map((s, i) => <span key={s} className="chip" style={{ animationDelay: `${i * 0.05}s` }}>{s}</span>)}
           </div>
-
-          <div className="school-box">
-            <span>🎓</span>
-            <div>
-              <div className="school-name">Sai Gon University</div>
-              <div className="school-sub">Information Technology</div>
-            </div>
-          </div>
+          <div className="school-box"><span>🎓</span><div>
+            <div className="school-name">{ui.school}</div>
+            <div className="school-sub">{ui.major}</div>
+          </div></div>
         </aside>
-
         <main className="right-panel">
           <div className="rp-top">
-            <div className="breadcrumb">
-              <span>portfolio</span>
-              <span className="bc-dot">/</span>
-              <span className="bc-hi">projects</span>
-            </div>
-            <div className="live-tag">
-              <span className="live-dot" />
-              Developer
-            </div>
+            <div className="breadcrumb"><span>{ui.portfolio}</span><span className="bc-dot">/</span><span className="bc-hi">{ui.projects}</span></div>
+            <div className="live-tag"><span className="live-dot" />{ui.developer}</div>
           </div>
-
-          <div className="sec-head">
-            <span className="sec-num">01</span>
-            <span className="sec-title">Academic & Personal Projects</span>
-          </div>
-
-          {/* HIỂN THỊ ĐỒNG ĐỀU TẤT CẢ ĐỒ ÁN BẰNG HERO CARD */}
-          {PROJECTS.map((project, index) => (
-            <div
-              key={index}
-              className="hero-card"
-              style={{ marginBottom: "36px" }}
-            >
-              <div className="hero-bar" />
+          <div className="sec-head"><span className="sec-num">01</span><span className="sec-title">{ui.projectHeading}</span></div>
+          {projects.map((project) => (
+            <div key={project.id} className="hero-card" style={{ marginBottom: "36px" }}>
               <div className="hero-head">
-                <div className="hero-icon">{project.icon}</div>
+                <div className="hero-icon"><ProjectIcon id={project.id} /></div>
                 <div className="hero-meta-wrap">
                   <div className="hero-course">{project.course}</div>
                   <h2 className="hero-name">{project.name}</h2>
                   <div className="hero-tagline">{project.tagline}</div>
                 </div>
               </div>
-
               <p className="hero-desc">{project.description}</p>
-
-              <div className="tech-row">
-                {project.tech.map((t) => (
-                  <span key={t} className="tech-pill">
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              <div className="metrics">
-                {project.metrics.map((m) => (
-                  <div key={m.label} className="metric">
-                    <div className="metric-val">{m.value}</div>
-                    <div className="metric-lbl">{m.label}</div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="hero-btns">
-                <a
-                  href="https://github.com/GiaKiet201205"
-                  className="btn-ghost"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {icons.github} Repository
-                </a>
-              </div>
+              <div className="tech-row">{project.tech.map((t) => <span key={t} className="tech-pill">{t}</span>)}</div>
+              <div className="metrics">{project.metrics.map((m) => (
+                <div key={m.label} className="metric"><div className="metric-val">{m.value}</div><div className="metric-lbl">{m.label}</div></div>
+              ))}</div>
+              {project.repository && (
+                <div className="hero-btns">
+                  {(project.repositories ?? [{ label: ui.repository, href: project.repository }]).map((repository) => (
+                    <a key={repository.href} href={repository.href} className="btn-ghost" target="_blank" rel="noreferrer">{icons.github} {repository.label}</a>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
         </main>
