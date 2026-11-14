@@ -1,16 +1,26 @@
-# React + Vite
+# Võ Lâm Gia Kiệt — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfolio cá nhân, sử dụng React và Vite.
 
-Currently, two official plugins are available:
+## Chạy tại máy
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm ci
+npm run dev
+```
 
-## React Compiler
+## Deploy từ main
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Website được build và triển khai bằng workflow `.github/workflows/deploy-pages.yml` sau mỗi lần push lên `main`.
 
-## Expanding the ESLint configuration
+Thiết lập một lần trên GitHub:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Vào **Settings → Pages → Build and deployment**.
+2. Chọn **Source: GitHub Actions**.
+3. Nếu environment `github-pages` có giới hạn nhánh triển khai, cho phép nhánh `main` tại **Settings → Environments → github-pages**.
+
+Commit và push các thay đổi lên `main`. Xem kết quả trong tab **Actions**, workflow **Deploy portfolio to GitHub Pages**. Có thể chạy lại bằng **Run workflow** với nhánh `main`.
+
+Workflow tự chạy `npm ci`, `npm run build` và deploy thư mục `dist`. Không cần chạy `npm run deploy` hoặc chuyển sang nhánh `gh-pages`.
+
+Website: https://giakiet201205.github.io/
