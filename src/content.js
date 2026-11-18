@@ -295,7 +295,7 @@ export const CONTENT = {
   vi: {
     info: {
       ...MY_INFO,
-      role: "Sinh viên Kĩ thuật phần mềm",
+      role: "Sinh viên chuyên ngành Kĩ thuật phần mềm",
       social: MY_INFO.social.map((link) => ({
         ...link,
         label: link.label === "Resume" ? "Hồ sơ năng lực" : link.label,

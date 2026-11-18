@@ -114,7 +114,10 @@ export default function App() {
         <aside className="left-panel">
           <Avatar src={info.avatar} alt={ui.avatarAlt} />
           <h1 className="name">{info.name}</h1>
-          <div className="role-pill"><span className="role-dot" />{info.role}</div>
+          <div className="role-pill">
+            <span className="role-dot" aria-hidden="true" />
+            <span className="role-label">{info.role}</span>
+          </div>
           {info.bio && (
             <div className="bio">
               {ui.aboutMe && <h2 className="bio-heading">{ui.aboutMe}</h2>}
