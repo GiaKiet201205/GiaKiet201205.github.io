@@ -7,7 +7,6 @@ const MY_INFO = {
   name: "Võ Lâm Gia Kiệt",
   role: "Software Engineering Student",
   avatar: "/QD000584.jpg",
-  bio: "Final-year Information Technology student (K23) at Saigon University. I enjoy solving practical problems through full-stack development, test automation, and algorithm optimization.",
   social: [
     {
       label: "Resume",
@@ -71,30 +70,6 @@ const PROJECTS = [
       { value: "Spring Boot", label: "Business Logic & APIs" },
       { value: "PostgreSQL", label: "Operational Data" },
       { value: "JWT", label: "Authentication & Access Control" },
-    ],
-  },
-  {
-    id: "misinformation-simulator",
-    name: "Misinformation Mitigation Simulator",
-    repository: "https://github.com/GiaKiet201205/GA-CIC--wiki-data-",
-    tagline: "Genetic Algorithm & Competitive Information Diffusion",
-    course: "Academic Project · Fall 2026",
-    description:
-      "Built a Python command-line tool to simulate competing misinformation and corrective information using two real-world network datasets from SNAP: Wiki-Vote and Epinions. Used a Genetic Algorithm to select corrective-information seed users under a limited intervention budget, with Competitive Independent Cascade and Monte Carlo simulations to estimate misinformation reach. Accelerated simulation with Numba and parallel GA evaluation, compared against Random, Degree, Betweenness, and CELF baselines, and exported CSV/JSON experiment results.",
-    tech: [
-      "Python",
-      "NumPy",
-      "Numba",
-      "Genetic Algorithm",
-      "Monte Carlo",
-      "Multiprocessing",
-      "CSR Graph",
-    ],
-    metrics: [
-      { value: "GA", label: "Intervention Seed Selection" },
-      { value: "CIC", label: "Competitive Diffusion Model" },
-      { value: "Monte Carlo", label: "Influence Estimation" },
-      { value: "Numba", label: "JIT Simulation Acceleration" },
     ],
   },
   {
@@ -204,25 +179,6 @@ const VI_PROJECT_TRANSLATIONS = {
       { value: "JWT", label: "Xác thực & kiểm soát truy cập" },
     ],
   },
-  "misinformation-simulator": {
-    name: "Mô phỏng hạn chế lan truyền tin sai",
-    tagline: "Thuật toán di truyền & lan truyền thông tin cạnh tranh",
-    course: "Đồ án học tập · Học kỳ thu 2026",
-    description:
-      "Xây dựng công cụ dòng lệnh bằng Python mô phỏng sự cạnh tranh giữa tin sai và thông tin đính chính, sử dụng hai bộ dữ liệu mạng thực tế từ SNAP: Wiki-Vote và Epinions. Sử dụng thuật toán di truyền để chọn tập người dùng phát tin đính chính trong ngân sách giới hạn, kết hợp mô hình Competitive Independent Cascade và mô phỏng Monte Carlo để ước lượng phạm vi ảnh hưởng của tin sai. Tăng tốc bằng Numba, đánh giá cá thể GA song song, so sánh với Random, Degree, Betweenness, CELF và xuất kết quả thực nghiệm CSV/JSON.",
-    metrics: [
-      { value: "GA", label: "Chọn tập người dùng can thiệp" },
-      { value: "CIC", label: "Mô hình lan truyền cạnh tranh" },
-      { value: "Monte Carlo", label: "Ước lượng mức ảnh hưởng" },
-      { value: "Numba", label: "Tăng tốc mô phỏng bằng JIT" },
-    ],
-  },
-  "smartdoc": {
-    tagline: "Hệ thống hỏi đáp tài liệu thông minh",
-    course: "Phát triển phần mềm mã nguồn mở · Học kỳ xuân 2026",
-    description:
-      "Hệ thống sinh câu trả lời tăng cường truy xuất (RAG) chạy cục bộ, hỗ trợ phân tích và hỏi đáp tài liệu PDF. Sử dụng Qwen2.5:7b qua Ollama và FAISS để tìm kiếm vector, hệ thống cung cấp câu trả lời chính xác, bảo vệ quyền riêng tư mà không phụ thuộc vào các API bên ngoài có tính phí.",
-  },
     "university-admissions": {
     name: "Hệ thống xét tuyển đại học",
     tagline: "Quản lý tuyển sinh & cổng thông tin thí sinh",
@@ -324,7 +280,6 @@ export const CONTENT = {
       pageTitle: "Võ Lâm Gia Kiệt | Portfolio",
       language: "Language",
       avatarAlt: "Portrait of Võ Lâm Gia Kiệt",
-      aboutMe: "About Me",
       workExperience: "Work Experience",
       contact: "CONTACT",
       techStack: "TECH STACK",
@@ -341,7 +296,6 @@ export const CONTENT = {
     info: {
       ...MY_INFO,
       role: "Sinh viên Kĩ thuật phần mềm",
-      bio: "Tôi là sinh viên năm cuối ngành Công nghệ thông tin (K23) tại Đại học Sài Gòn. Tôi yêu thích giải quyết các bài toán thực tế bằng lập trình, tập trung vào phát triển ứng dụng full-stack, kiểm thử tự động và tối ưu thuật toán.",
       social: MY_INFO.social.map((link) => ({
         ...link,
         label: link.label === "Resume" ? "Hồ sơ năng lực" : link.label,
@@ -386,7 +340,6 @@ export const CONTENT = {
       pageTitle: "Võ Lâm Gia Kiệt | Hồ sơ năng lực",
       language: "Ngôn ngữ",
       avatarAlt: "Ảnh chân dung Võ Lâm Gia Kiệt",
-      aboutMe: "Giới thiệu bản thân",
       workExperience: "Kinh nghiệm làm việc",
       contact: "LIÊN HỆ",
       techStack: "CÔNG NGHỆ",

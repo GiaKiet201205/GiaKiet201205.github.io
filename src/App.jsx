@@ -115,10 +115,12 @@ export default function App() {
           <Avatar src={info.avatar} alt={ui.avatarAlt} />
           <h1 className="name">{info.name}</h1>
           <div className="role-pill"><span className="role-dot" />{info.role}</div>
-          <div className="bio">
-            <h2 className="bio-heading">{ui.aboutMe}</h2>
-            <p>{info.bio}</p>
-          </div>
+          {info.bio && (
+            <div className="bio">
+              {ui.aboutMe && <h2 className="bio-heading">{ui.aboutMe}</h2>}
+              <p>{info.bio}</p>
+            </div>
+          )}
           <section className="experience-section" aria-labelledby="experience-heading">
             <h2 className="bio-heading" id="experience-heading">{ui.workExperience}</h2>
             <div className="experience-list">
