@@ -1,6 +1,6 @@
 const RESUME_FILES = {
-  en: `/GiaKiet_Resume.pdf?v=${import.meta.env.RESUME_VERSION}`,
-  vi: `/GiaKiet_Resume_VI.pdf?v=${import.meta.env.RESUME_VERSION}`,
+  en: "/GiaKiet_Resume.pdf",
+  vi: "/GiaKiet_Resume_VI.pdf",
 };
 
 const MY_INFO = {
