@@ -1,6 +1,6 @@
 const RESUME_FILES = {
-  en: "/GiaKiet_Resume.pdf",
-  vi: "/GiaKiet_Resume_VI.pdf",
+  en: `/GiaKiet_Resume.pdf?v=${import.meta.env.RESUME_VERSION}`,
+  vi: `/GiaKiet_Resume_VI.pdf?v=${import.meta.env.RESUME_VERSION}`,
 };
 
 const MY_INFO = {
@@ -44,32 +44,63 @@ const MY_INFO = {
 
 const PROJECTS = [
   {
+    id: "gk-lmros",
+    name: "GK-LMROS — Logistics Management & Route Optimization",
+    repository: "https://github.com/GiaKiet201205/GK-LMROS",
+    tagline: "Pickup, Delivery & Fleet Dispatch",
+    course: "Personal Project",
+    description:
+      "Independently designed and developed a logistics system with customer, dispatcher, and driver portals. Built four backend services using Spring Boot and FastAPI, with separate databases for authentication, customers, and logistics. Implemented order placement, warehouse handoffs, fleet and driver scheduling, delivery tracking, retries, and returns. Developed a Python route-planning heuristic with insertion, 2-opt, and inter-route relocation, enforcing vehicle capacity and time windows while supporting new orders during active trips. Added maintenance approvals, driver payroll, financial reporting, and an AI chatbot assistant. Packaged the services with Docker Compose and an Nginx API gateway, with mobile-friendly PWA interfaces.",
+    tech: [
+      "React",
+      "Spring Boot",
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "PostGIS",
+      "Redis",
+      "Redpanda / Kafka",
+      "Docker Compose",
+      "Nginx",
+      "PWA",
+    ],
+    metrics: [
+      { value: "Spring Boot", label: "Microservices Backend" },
+      { value: "Python", label: "Route Optimization" },
+      { value: "PostgreSQL", label: "Service-owned Databases" },
+      { value: "React / PWA", label: "Customer, Dispatcher & Driver Portals" },
+    ],
+  },
+  {
     id: "training-center",
-    name: "Training Center Management System",
+    name: "GK Academy — Training Center Management System",
     repository: "https://github.com/GiaKiet201205/BE-QLDAPM",
     repositories: [
       { label: "Frontend", href: "https://github.com/GiaKiet201205/FE-QLDAPM" },
       { label: "Backend", href: "https://github.com/GiaKiet201205/BE-QLDAPM" },
     ],
-    tagline: "Academic Operations, Staff Scheduling & Payroll",
+    tagline: "Course Storefront, Academic Operations & Payroll",
     course: "Academic Project · Fall 2026",
     description:
-      "Developed a training center management system with React, Spring Boot, and PostgreSQL, supporting six roles with scoped access. Implemented student and class management, availability approval, conflict-aware teaching and staff assignments, teacher attendance, and monthly payroll. Added dashboards and audit history. Integrated a course sales website linking course registrations with training operations.",
+      "Built two React websites for GK Academy—a course storefront and a management portal—sharing a Spring Boot/PostgreSQL backend with separate login sessions. Implemented six staff roles and customer accounts with scoped access. Connected course selection, cart, enrollment orders, and configurable VNPAY/MoMo payments with training operations. Added student and class management, availability approval, conflict-aware scheduling, teacher attendance, assignments, exams, results, and monthly payroll. Integrated Google/Facebook login and an AI chatbot assistant for role-specific guidance, with configurable Gemini/OpenAI integration and controlled, read-only data lookup for admins. Used Prisma for database migrations and Docker for backend deployment.",
     tech: [
       "React",
       "Tailwind CSS",
       "Spring Boot",
+      "Spring Data JPA",
       "Spring Security",
       "JWT",
+      "OAuth2",
       "PostgreSQL",
       "Prisma",
       "Docker",
+      "Gemini / OpenAI",
     ],
     metrics: [
-      { value: "React", label: "Role-based Interface" },
-      { value: "Spring Boot", label: "Business Logic & APIs" },
-      { value: "PostgreSQL", label: "Operational Data" },
-      { value: "JWT", label: "Authentication & Access Control" },
+      { value: "2 Websites", label: "Storefront & Management" },
+      { value: "PostgreSQL", label: "Database" },
+      { value: "VNPAY / MoMo", label: "Payment Integration" },
+      { value: "AI Chatbot", label: "Role-specific Virtual Assistant" },
     ],
   },
   {
@@ -166,17 +197,30 @@ const PROJECTS = [
 ];
 
 const VI_PROJECT_TRANSLATIONS = {
+  "gk-lmros": {
+    name: "GK-LMROS — Quản lý giao nhận & tối ưu tuyến đường",
+    tagline: "Lấy hàng, giao hàng & điều phối vận tải",
+    course: "Dự án cá nhân",
+    description:
+      "Tự thiết kế và phát triển hệ thống logistics với ba cổng dành cho khách hàng, điều phối viên và tài xế. Xây dựng bốn dịch vụ backend bằng Spring Boot và FastAPI, tách cơ sở dữ liệu xác thực, khách hàng và vận tải. Triển khai đặt đơn, bàn giao qua kho, quản lý xe và lịch tài xế, theo dõi tiến độ, giao lại và hoàn hàng. Phát triển thuật toán heuristic bằng Python sử dụng chèn điểm, 2-opt và điều chỉnh phân bổ giữa các tuyến, kiểm tra sức chứa và khung giờ, hỗ trợ chèn đơn mới khi xe đang chạy. Bổ sung duyệt bảo dưỡng, lương tài xế, báo cáo tài chính và trợ lý ảo chatbot AI. Đóng gói bằng Docker Compose, định tuyến API qua Nginx và xây dựng giao diện PWA phù hợp thiết bị di động.",
+    metrics: [
+      { value: "Spring Boot", label: "Backend microservices" },
+      { value: "Python", label: "Tối ưu tuyến đường" },
+      { value: "PostgreSQL", label: "Cơ sở dữ liệu riêng theo dịch vụ" },
+      { value: "React / PWA", label: "Cổng khách hàng, điều phối & tài xế" },
+    ],
+  },
   "training-center": {
-    name: "Hệ thống quản lý trung tâm đào tạo",
-    tagline: "Quản lý đào tạo, phân công nhân sự & công lương",
+    name: "GK Academy — Hệ thống quản lý trung tâm đào tạo",
+    tagline: "Bán khóa học, quản lý đào tạo & công lương",
     course: "Đồ án học tập · Học kỳ thu 2026",
     description:
-      "Phát triển hệ thống quản lý trung tâm đào tạo bằng React, Spring Boot và PostgreSQL, hỗ trợ 6 vai trò với phạm vi truy cập riêng. Triển khai quản lý học viên, lớp học, duyệt lịch rảnh, phân công giáo viên/nhân viên có kiểm tra trùng lịch, điểm danh giáo viên và tính công lương hằng tháng. Bổ sung dashboard và lịch sử thay đổi nghiệp vụ. Tích hợp website bán khóa học, liên kết thông tin đăng ký với hoạt động đào tạo.",
+      "Xây dựng hai website React cho GK Academy gồm bán khóa học và quản lý trung tâm, dùng chung backend Spring Boot/PostgreSQL và tách phiên đăng nhập. Triển khai 6 vai trò nhân sự cùng tài khoản khách hàng, phân quyền theo phạm vi dữ liệu. Liên kết chọn khóa học, giỏ hàng, đơn đăng ký và thanh toán VNPAY/MoMo theo cấu hình với hoạt động đào tạo. Bổ sung quản lý học viên, lớp học, duyệt lịch rảnh, phân công có kiểm tra trùng lịch, điểm danh giáo viên, bài tập, bài kiểm tra, kết quả học tập và công lương hằng tháng. Tích hợp đăng nhập Google/Facebook và trợ lý ảo chatbot AI hướng dẫn theo vai trò, kết nối Gemini/OpenAI tùy cấu hình và hỗ trợ quản trị viên tra cứu dữ liệu chỉ đọc có kiểm soát. Sử dụng Prisma quản lý migration và Docker triển khai backend.",
     metrics: [
-      { value: "React", label: "Giao diện theo vai trò" },
-      { value: "Spring Boot", label: "Nghiệp vụ & API" },
-      { value: "PostgreSQL", label: "Dữ liệu vận hành" },
-      { value: "JWT", label: "Xác thực & kiểm soát truy cập" },
+      { value: "2 website", label: "Bán khóa học & quản lý" },
+      { value: "PostgreSQL", label: "Cơ sở dữ liệu" },
+      { value: "VNPAY / MoMo", label: "Tích hợp thanh toán" },
+      { value: "Chatbot AI", label: "Trợ lý ảo theo vai trò" },
     ],
   },
     "university-admissions": {

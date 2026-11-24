@@ -47,6 +47,7 @@ const icons = {
 };
 
 const projectIconPaths = {
+  "gk-lmros": <><path d="M3 6h11v11H3zM14 10h4l3 4v3h-7" /><circle cx="7" cy="18" r="2" /><circle cx="17" cy="18" r="2" /></>,
   "training-center": <><rect x="4" y="3" width="16" height="18" rx="1" /><path d="M9 21v-5h6v5M8 7h1m6 0h1M8 11h1m6 0h1" /></>,
   "misinformation-simulator": <><circle cx="12" cy="5" r="2" /><circle cx="5" cy="18" r="2" /><circle cx="19" cy="18" r="2" /><path d="m11 7-5 9m7-9 5 9M7 18h10" /></>,
   "university-admissions": <><path d="m2 8 10-5 10 5-10 5L2 8Zm4 2v7c4 3 8 3 12 0v-7m4-2v8" /></>,
@@ -80,22 +81,11 @@ function Avatar({ src, alt }) {
 }
 
 export default function App() {
-  const [language, setLanguage] = useState(() => {
-    try {
-      return localStorage.getItem("portfolio-language") === "vi" ? "vi" : "en";
-    } catch {
-      return "en";
-    }
-  });
+  const [language, setLanguage] = useState("en");
   const { info, workExperience, projects, ui } = CONTENT[language];
   useEffect(() => {
     document.documentElement.lang = language;
     document.title = ui.pageTitle;
-    try {
-      localStorage.setItem("portfolio-language", language);
-    } catch {
-      // Switching also works when browser storage is unavailable.
-    }
   }, [language, ui.pageTitle]);
 
   return (
